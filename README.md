@@ -20,7 +20,11 @@ A web scraper project for pulling orders from the Habr Freelance website using s
 - beautifulsoup
 
 ## :no_entry_sign: Current problems
-Here in the near future I will post information that almost everything does not work...
+>Here in the near future I will post information that almost everything does not work...
+- [ ] Structural separation of working code
+- [ ] Data checks
+- [ ] Class encapsulation
+- [ ] Data filters
 
 ## :cookie: How to help the project?
 This project was created to test the work of libraries and learn how to work with web scraping. If you know that something can be done differently, more optimized or... whatever, leave your message. 
