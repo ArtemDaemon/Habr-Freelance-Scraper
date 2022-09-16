@@ -14,7 +14,8 @@ A web scraper project for pulling orders from the Habr Freelance website using s
 ## :alien: Tools & Technologies
 #### Language - Python
 
-#### Libraries:
+#### Tools:
+- OOP
 - requests
 - beautifulsoup
 
