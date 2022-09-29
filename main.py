@@ -18,6 +18,9 @@ ClassDivLink = "task__price"
 def load_orders():
     loaded_orders = []
     result = req.get(URLForReq)
+    status_code = result.status_code
+    if status_code != 200:
+        print(f"Received status-code - {status_code}")
     soup = BeautifulSoup(result.text, "html.parser")
     articles = soup.findAll(TagArticle, class_=ClassArticle)
 
