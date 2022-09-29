@@ -1,5 +1,7 @@
 import requests as req
 from bs4 import BeautifulSoup
+from rich.console import Console
+from rich.table import Table
 from classes.Order import Order
 
 URLForReq = 'https://freelance.habr.com/tasks'
@@ -64,6 +66,17 @@ def load_orders():
 
 
 if __name__ == '__main__':
+    table = Table(title="Task List", show_lines=True)
+
+    table.add_column("Task")
+    table.add_column("Price", style="yellow")
+    table.add_column("Tags", style="green")
+    table.add_column("Link", style="cyan")
+
     orders = load_orders()
     for order in orders:
-        print(order)
+        table.add_row(*order.get_list())
+
+    console = Console()
+    console.print(table)
+    console.print('[green]Done!', style='italic')

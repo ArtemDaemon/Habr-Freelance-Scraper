@@ -7,3 +7,7 @@ class Order:
 
     def __str__(self):
         return f"\n-{self.__name}\n{self.__tags}\n{self.__price}\n{self.__link}\n"
+
+    def get_list(self):
+        print_list = (self.__name, self.__price, ','.join(self.__tags), self.__link)
+        return print_list
