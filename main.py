@@ -15,15 +15,19 @@ ClassA = "task__item_link"
 ClassDivLink = "task__price"
 
 
-def load_orders():
-    loaded_orders = []
+def load_articles():
     result = req.get(URLForReq)
     status_code = result.status_code
     if status_code != 200:
         print(f"Received status-code - {status_code}")
+        return []
     soup = BeautifulSoup(result.text, "html.parser")
-    articles = soup.findAll(TagArticle, class_=ClassArticle)
+    return soup.findAll(TagArticle, class_=ClassArticle)
 
+
+def load_orders():
+    loaded_orders = []
+    articles = load_articles()
     for article in articles:
         name_div = article.find(TagDiv, class_=ClassDivName)
         name = name_div.text
