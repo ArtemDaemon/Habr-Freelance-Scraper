@@ -15,8 +15,28 @@ ClassA = 'tags__item_link'
 ClassDivLink = 'task__price'
 
 
+def print_menu():
+    params = {}
+    settings_dict = {'only_mentioned': 'From those with reviews? Y/N ',
+                     'only_with_price': 'With a specified price? Y/N ',
+                     'safe_deal': 'With a safe deal? Y/N ',
+                     'only_urgent': 'Only urgent orders? Y/N ',
+                     'q': 'Search query is '}
+
+    print('Hello, world!')
+    for setting in settings_dict:
+        answer = input(settings_dict[setting])
+        if setting == 'q':
+            params[setting] = answer
+        elif answer == "Y":
+            params[setting] = 'true'
+
+    return params
+
+
 def load_articles():
-    result = req.get(URLForReq)
+    settings = print_menu()
+    result = req.get(URLForReq, params=settings)
     status_code = result.status_code
     if status_code != 200:
         print(f'Received status-code - {status_code}')
@@ -43,12 +63,7 @@ def load_orders():
     return loaded_orders
 
 
-def print_menu():
-    print('Hello, world')
-
-
 if __name__ == '__main__':
-    print_menu()
     orders = load_orders()
     for order in orders:
         print(order)

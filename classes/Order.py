@@ -6,4 +6,4 @@ class Order:
         self.__price = price
 
     def __str__(self):
-        return f"-{self.__name}\n{self.__tags}\n{self.__price}\n{self.__link}\n"
+        return f"\n-{self.__name}\n{self.__tags}\n{self.__price}\n{self.__link}\n"
