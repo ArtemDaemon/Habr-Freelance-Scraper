@@ -8,7 +8,7 @@ class Order:
         self.__urgent = urgent
 
     def __str__(self):
-        return f"\n-{self.__name}\n{self.__tags}\n{self.__price}\n{self.__link}\n"
+        return f"-{self.__name}\n{self.__tags}\n{self.__price}\n{self.__link}\n"
 
     def get_list(self):
         if self.__self_deal:

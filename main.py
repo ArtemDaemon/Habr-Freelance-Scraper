@@ -99,8 +99,12 @@ if __name__ == '__main__':
     table.add_column("Link", style="cyan", no_wrap=True)
 
     orders = load_orders()
-    for order in orders:
-        table.add_row(*order.get_list())
+
+    with open('readme.txt', 'w') as f:
+        for order in orders:
+            table.add_row(*order.get_list())
+            f.write(str(order))
+            f.write('\n')
 
     console.print(table)
     console.print(f'[green]Done! Displayed {len(orders)} order(s)', style='italic')
