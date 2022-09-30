@@ -47,13 +47,22 @@ def print_menu():
 
 def load_articles():
     settings = print_menu()
-    result = req.get(URLForReq, params=settings)
-    status_code = result.status_code
-    if status_code != 200:
-        print(f'Received status-code - {status_code}')
-        return []
-    soup = BeautifulSoup(result.text, 'html.parser')
-    return soup.findAll(TagArticle, class_=ClassArticle)
+    pages = range(1, 100)
+    loaded_articles = []
+    for page in pages:
+        settings["page"] = str(page)
+        result = req.get(URLForReq, params=settings)
+        status_code = result.status_code
+        if status_code != 200:
+            return loaded_articles
+        soup = BeautifulSoup(result.text, 'html.parser')
+        found_articles = soup.findAll(TagArticle, class_=ClassArticle)
+        if len(found_articles) == 0:
+            return loaded_articles
+        loaded_articles += found_articles
+
+        console.log(f"[yellow]Finish fetching data from page[/yellow] {page}")
+    return loaded_articles
 
 
 def load_orders():
