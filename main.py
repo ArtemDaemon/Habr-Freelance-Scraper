@@ -107,11 +107,12 @@ if __name__ == '__main__':
 
     orders = load_orders()
 
-    with open('readme.txt', 'w') as f:
-        for order in orders:
-            table.add_row(*order.get_list())
-            f.write(str(order))
-            f.write('\n')
+    text_file = open('readme.txt', 'w')
+    for order in orders:
+        table.add_row(*order.get_list())
+        text_file.write(str(order))
+        text_file.write('\n')
+    text_file.close()
 
     console.print(table)
     console.print(f'[green]Done! Displayed {len(orders)} order(s)', style='italic')
