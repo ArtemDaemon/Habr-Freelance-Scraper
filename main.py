@@ -89,14 +89,21 @@ def load_orders():
     return loaded_orders
 
 
-if __name__ == '__main__':
-    table = Table(title="Task List", show_lines=True)
+def create_table():
+    console_table = Table(title="Task List", show_lines=True)
 
-    table.add_column("Task")
-    table.add_column("Type", style="yellow")
-    table.add_column("Price", style="yellow")
-    table.add_column("Tags", style="green", overflow="fold")
-    table.add_column("Link", style="cyan", no_wrap=True)
+    console_table.add_column("Task")
+    console_table.add_column("Type", style="yellow")
+    console_table.add_column("Price", style="yellow")
+    console_table.add_column("Tags", style="green", overflow="fold")
+    console_table.add_column("Link", style="cyan", no_wrap=True)
+
+    return console_table
+
+
+if __name__ == '__main__':
+
+    table = create_table()
 
     orders = load_orders()
 
