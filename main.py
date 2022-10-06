@@ -21,6 +21,10 @@ ClassDivLink = 'task__price'
 ClassImgSafeDeal = 'safe-deal-icon__image'
 ClassImgUrgent = 'urgent-badge__image'
 
+SearchSetting = 'q'
+AnswerNo = 'N'
+AnswerYes = 'Y'
+
 console = Console()
 
 
@@ -30,17 +34,17 @@ def print_menu():
                      'only_with_price': 'With a specified price?',
                      'safe_deal': 'With a safe deal?',
                      'only_urgent': 'Only urgent orders?',
-                     'q': 'Search query is '}
+                     SearchSetting: 'Search query is '}
 
     console.print(f'[green]Hello world!', style='italic')
     for setting in settings_dict:
-        if setting == 'q':
+        if setting == SearchSetting:
             answer = Prompt.ask(settings_dict[setting])
             params[setting] = answer
             continue
 
-        answer = Prompt.ask(settings_dict[setting], default="N", choices=["Y", "N"])
-        if answer == "Y":
+        answer = Prompt.ask(settings_dict[setting], default=AnswerNo, choices=[AnswerYes, AnswerNo])
+        if answer == AnswerYes:
             params[setting] = 'true'
 
     return params
