@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
+from art import tprint
 from classes.Order import Order
 
 URLForReq = 'https://freelance.habr.com/tasks'
@@ -102,6 +103,7 @@ def create_table():
 
 
 def main():
+    tprint('Habr Freelance')
     table = create_table()
 
     orders = load_orders()
