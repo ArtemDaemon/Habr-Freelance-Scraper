@@ -101,13 +101,12 @@ def create_table():
     return console_table
 
 
-if __name__ == '__main__':
-
+def main():
     table = create_table()
 
     orders = load_orders()
 
-    text_file = open('readme.txt', 'w')
+    text_file = open('readme.txt', 'w', encoding='utf-8')
     for order in orders:
         table.add_row(*order.get_list())
         text_file.write(str(order))
@@ -116,3 +115,7 @@ if __name__ == '__main__':
 
     console.print(table)
     console.print(f'[green]Done! Displayed {len(orders)} order(s)', style='italic')
+
+
+if __name__ == '__main__':
+    main()
